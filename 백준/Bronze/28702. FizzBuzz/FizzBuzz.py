@@ -1,46 +1,22 @@
-import sys
-input = sys.stdin.readline
-
-def solution(a, b, c):
-    if a == "Fizz":
-        if b != "Fizz" and b != "Buzz" and b != "FizzBuzz":
-            b = int(b)
-            if (b + 2) % 5 == 0:
-                return "FizzBuzz"
-        if c != "Fizz" and c != "Buzz" and c != "FizzBuzz":
-            c = int(c)
-            if (c + 1) % 5 == 0:
-                return "FizzBuzz"
+def solution(str_list):
+    result = 0
+    for i in range(0,3):
+        if str_list[i].isdigit() :
+            result = int(str_list[i]) + (3-i)
+            break
+    if result % 15 == 0:
+        return "FizzBuzz"
+    elif result % 3 == 0:
         return "Fizz"
-    if a != "Fizz" and a != "Buzz" and a != "FizzBuzz":
-        a = int(a)
-        if (a + 3) % 5 == 0:
-            return "Buzz"
-        return a + 3
-    if b != "Fizz" and b != "Buzz" and b != "FizzBuzz":
-        b = int(b)
-        if (b + 2) % 15 == 0:
-            return "FizzBuzz"
-        elif (b + 2) % 3 == 0:
-            return "Fizz"
-        elif (b + 2) % 5 == 0:
-            return "Buzz"
-        return b + 2
-    if c != "Fizz" and c != "Buzz" and c != "FizzBuzz":
-        c = int(c)
-        if (c + 1) % 15 == 0:
-            return "FizzBuzz"
-        elif (c + 1) % 3 == 0:
-            return "Fizz"
-        elif (c + 1) % 5 == 0:
-            return "Buzz"
-        return c + 1
-    return None
+    elif result % 5 == 0:
+        return "Buzz"
+    else:
+        return result
+    
+    
+input_list = []
 
-
-n1 = input().strip()
-n2 = input().strip()
-n3 = input().strip()
-print(solution(n1, n2, n3))
-
-
+for _ in range(3):
+    input_list.append(input())
+    
+print(solution(input_list))
